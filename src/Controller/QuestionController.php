@@ -26,11 +26,12 @@ class QuestionController extends AbstractController
     /**
      * @Route("/questions/{slug}", name="app_question_show")
      * @param $slug
-     * @param MarkdownParserInterface $markdownParser
-     * @param CacheInterface $cache
+     * @param MarkdownHelper $markdownHelper
      * @return Response
      */
     public function show($slug, MarkdownHelper $markdownHelper){
+
+        dump($this->getParameter('cache_adapter'));
 
         $questionText = "I've been turned into a cat, any thoughts on how to turn back? While I'm **adorable**, I don't really care for cat food.";
 

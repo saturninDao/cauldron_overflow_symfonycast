@@ -5,6 +5,7 @@ namespace App\Service;
 
 
 use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
+use Symfony\Contracts\Cache\CacheInterface;
 
 class MarkdownHelper
 {
@@ -24,7 +25,7 @@ class MarkdownHelper
 
     public function parse(string $source):string
     {
-        $parsedQuestionText = $this->cache->get('markdown_'.md5($source),function() use ($source){
+        return $this->cache->get('markdown_'.md5($source),function() use ($source){
             return $this->markdownParser->transformMarkdown($source);
         });
     }
