@@ -5,15 +5,22 @@ namespace App\Controller;
 
 
 use App\Service\MarkdownHelper;
-use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Cache\CacheInterface;
 
 
 class QuestionController extends AbstractController
 {
+    /**
+     * QuestionController constructor.
+     * @param LoggerInterface $appLogger
+     */
+    public function __construct()
+    {
+    }
+
     /**
      * @Route("/", name="app_homepage")
      */
@@ -31,7 +38,7 @@ class QuestionController extends AbstractController
      */
     public function show($slug, MarkdownHelper $markdownHelper){
 
-        dump($this->getParameter('cache_adapter'));
+       // dump($this->getParameter('cache_adapter'));
 
         $questionText = "I've been turned into a cat, any thoughts on how to turn back? While I'm **adorable**, I don't really care for cat food.";
 
