@@ -37,6 +37,8 @@ class QuestionController extends AbstractController
             return $markdownParser->transformMarkdown($questionText);
         });
 
+        dump($markdownParser);
+
         $answers = [
             'Make sure your cat is sitting percfectly',
             'Honestly, I like furry shoes better than MY cat',
