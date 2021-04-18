@@ -31,8 +31,8 @@ class MarkdownHelper
                                 bool $isDebug,
                                 LoggerInterface $appLogger,LoggerInterface $markdownLogger)
     {
-        $this->logger = $appLogger;
-        $this->markdownLogger = $markdownLogger;
+        $this->logger = $markdownLogger;
+       // $this->markdownLogger = $markdownLogger;
         $this->markdownParser = $markdownParser;
         $this->cache = $cache;
         $this->isDebug = $isDebug;
