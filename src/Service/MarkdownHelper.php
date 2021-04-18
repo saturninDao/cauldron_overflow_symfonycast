@@ -29,9 +29,9 @@ class MarkdownHelper
     public function __construct(MarkdownParserInterface $markdownParser,
                                 CacheInterface $cache,
                                 bool $isDebug,
-                                LoggerInterface $appLogger,LoggerInterface $markdownLogger)
+                                LoggerInterface $appLogger,LoggerInterface $mdLogger)
     {
-        $this->logger = $markdownLogger;
+        $this->logger = $mdLogger;
        // $this->markdownLogger = $markdownLogger;
         $this->markdownParser = $markdownParser;
         $this->cache = $cache;
