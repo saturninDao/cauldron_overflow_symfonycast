@@ -58,7 +58,7 @@ class QuestionController extends AbstractController
         $parsedQuestionText = $markdownHelper->parse($questionText);
 
         $answers = [
-            'Make sure your cat is sitting percfectly',
+            'Make sure your cat is *sitting* percfectly',
             'Honestly, I like furry shoes better than MY cat',
             "Maybe... try saying the spell backwards ?",
         ];

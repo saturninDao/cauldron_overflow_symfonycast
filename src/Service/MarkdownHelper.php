@@ -40,16 +40,15 @@ class MarkdownHelper
 
     public function parse(string $source):string
     {
-        /**/
-        dump($this->isDebug);
-        if (stripos($source, 'cat') !== false) {
-            $this->logger->info('Meow!');
-        }
-        return $this->cache->get('markdown_'.md5($source),function() use ($source){
+
+//        if (stripos($source, 'cat') !== false) {
+//            $this->logger->info('Meow!');
+//        }
+//        return $this->cache->get('markdown_'.md5($source),function() use ($source){
 
                 return $this->markdownParser->transformMarkdown($source);
 
-        });
+//        });
         /**/
 
     }

@@ -10,7 +10,6 @@
         "knplabs/knp-markdown-bundle": "^1.9",
         "predis/predis": "^1.1",
         "sensio/framework-extra-bundle": "^6.1",
-        "sentry/sentry-symfony": "^4.0",
         "symfony/asset": "5.2.*",
         "symfony/console": "5.2.*",
         "symfony/debug-bundle": "5.2.*",
