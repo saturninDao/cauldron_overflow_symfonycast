@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Service\MarkdownHelper;
 use Psr\Log\LoggerInterface;
+use Sentry\State\HubInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,9 +48,11 @@ class QuestionController extends AbstractController
      * @param MarkdownHelper $markdownHelper
      * @return Response
      */
-    public function show($slug, MarkdownHelper $markdownHelper){
+    public function show($slug, MarkdownHelper $markdownHelper,HubInterface $sentryHub){
 
        // dump($this->getParameter('cache_adapter'));
+
+        dump($sentryHub);
 
         $this->logger->info("Hi guys");
         $questionText = "I've been turned into a cat, any thoughts on how to turn back? While I'm **adorable**, I don't really care for cat food.";
