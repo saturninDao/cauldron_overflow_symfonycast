@@ -14,11 +14,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuestionController extends AbstractController
 {
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+    /**
+     * @var bool
+     */
+    private $isDebug;
+
+    /**
      * QuestionController constructor.
      * @param LoggerInterface $appLogger
      */
-    public function __construct()
+    public function __construct(LoggerInterface $logger, bool $isDebug)
     {
+        $this->logger = $logger;
+        $this->isDebug = $isDebug;
     }
 
     /**
@@ -40,6 +51,7 @@ class QuestionController extends AbstractController
 
        // dump($this->getParameter('cache_adapter'));
 
+        $this->logger->info("Hi guys");
         $questionText = "I've been turned into a cat, any thoughts on how to turn back? While I'm **adorable**, I don't really care for cat food.";
 
         $parsedQuestionText = $markdownHelper->parse($questionText);
