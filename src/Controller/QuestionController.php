@@ -48,11 +48,9 @@ class QuestionController extends AbstractController
      * @param MarkdownHelper $markdownHelper
      * @return Response
      */
-    public function show($slug, MarkdownHelper $markdownHelper,HubInterface $sentryHub){
+    public function show($slug, MarkdownHelper $markdownHelper){
 
        // dump($this->getParameter('cache_adapter'));
-
-        dump($sentryHub);
 
         $this->logger->info("Hi guys");
         $questionText = "I've been turned into a cat, any thoughts on how to turn back? While I'm **adorable**, I don't really care for cat food.";
