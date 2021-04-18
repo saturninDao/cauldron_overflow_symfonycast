@@ -33,5 +33,5 @@ services:
     # please note that last definitions always *replace* previous ones
 
     App\Service\MarkdownHelper:
-        arguments:
-            $isDebug: '%kernel.debug%'
+        bind:
+            bool $isDebug: '%kernel.debug%'

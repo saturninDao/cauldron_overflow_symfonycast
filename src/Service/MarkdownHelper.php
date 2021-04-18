@@ -13,6 +13,7 @@ class MarkdownHelper
     private $markdownParser;
     private $cache;
     private $isDebug;
+    private $markdownLogger;
     /**
      * @var LoggerInterface
      */
@@ -28,9 +29,10 @@ class MarkdownHelper
     public function __construct(MarkdownParserInterface $markdownParser,
                                 CacheInterface $cache,
                                 bool $isDebug,
-                                LoggerInterface $appLogger)
+                                LoggerInterface $appLogger,LoggerInterface $markdownLogger)
     {
         $this->logger = $appLogger;
+        $this->markdownLogger = $markdownLogger;
         $this->markdownParser = $markdownParser;
         $this->cache = $cache;
         $this->isDebug = $isDebug;
@@ -38,12 +40,18 @@ class MarkdownHelper
 
     public function parse(string $source):string
     {
+        /**/
         dump($this->isDebug);
+        if (stripos($source, 'cat') !== false) {
+            $this->logger->info('Meow!');
+        }
         return $this->cache->get('markdown_'.md5($source),function() use ($source){
 
                 return $this->markdownParser->transformMarkdown($source);
 
         });
+        /**/
+
     }
 
 }
