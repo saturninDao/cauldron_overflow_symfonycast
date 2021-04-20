@@ -41,7 +41,7 @@ class QuestionController extends AbstractController
     public function homepage(EntityManagerInterface $entityManager){
 
         $repository = $entityManager->getRepository(Question::class);
-        $questions = $repository->findAll();
+        $questions = $repository->findBy([], ['askedAt' => 'DESC']);
         //dd($questions);
 
         return $this->render('homepage.html.twig',["questions"=>$questions]);
