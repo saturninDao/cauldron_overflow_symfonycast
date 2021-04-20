@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Question;
 use App\Service\MarkdownHelper;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,9 +38,13 @@ class QuestionController extends AbstractController
     /**
      * @Route("/", name="app_homepage")
      */
-    public function homepage(){
+    public function homepage(EntityManagerInterface $entityManager){
 
-        return $this->render('homepage.html.twig');
+        $repository = $entityManager->getRepository(Question::class);
+        $questions = $repository->findAll();
+        //dd($questions);
+
+        return $this->render('homepage.html.twig',["questions"=>$questions]);
 
     }
 
