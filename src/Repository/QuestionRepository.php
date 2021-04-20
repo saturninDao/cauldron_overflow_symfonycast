@@ -40,15 +40,21 @@ class QuestionRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('q');
 
-        return $this->addIsAskedQueryBuilder($qb)
+        return $this->addIsAskedQueryBuilder()
             ->orderBy('q.askedAt', 'DESC')
             ->getQuery()
             ->getResult();
     }
 
-    private function addIsAskedQueryBuilder(QueryBuilder $qb): QueryBuilder
+    private function addIsAskedQueryBuilder(QueryBuilder $qb= null): QueryBuilder
     {
-        return $qb->andWhere('q.askedAt IS NOT NULL');
+        return $this->getOrCreateQueryBuilder($qb)
+            ->andWhere('q.askedAt IS NOT NULL');
+    }
+
+    private function getOrCreateQueryBuilder(QueryBuilder $qb = null): QueryBuilder
+    {
+        return $qb ?: $this->createQueryBuilder('q');
     }
 
     /**/
