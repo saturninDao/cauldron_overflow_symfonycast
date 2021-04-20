@@ -79,19 +79,10 @@ EOF
 
     /**
      * @Route("/questions/{slug}", name="app_question_show")
-     * @param $slug
-     * @param MarkdownHelper $markdownHelper
+     * @param Question $question
      * @return Response
      */
-    public function show($slug, MarkdownHelper $markdownHelper,EntityManagerInterface $entityManager){
-
-        $repository = $entityManager->getRepository(Question::class);
-        $question = $repository->findOneBy(['slug' => $slug]);
-        if (!$question) {
-            throw $this->createNotFoundException(sprintf('no question found for slug "%s"', $slug));
-        }
-        //dd($question);
-
+    public function show(Question $question){
         $answers = [
             'Make sure your cat is sitting `purrrfectly` still 🤣',
             'Honestly, I like furry shoes better than MY cat',
