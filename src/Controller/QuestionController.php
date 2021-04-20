@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\Question;
+use App\Repository\QuestionRepository;
 use App\Service\MarkdownHelper;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -38,13 +39,9 @@ class QuestionController extends AbstractController
     /**
      * @Route("/", name="app_homepage")
      */
-    public function homepage(EntityManagerInterface $entityManager){
+    public function homepage(QuestionRepository $repository){
 
-        $repository = $entityManager->getRepository(Question::class);
-        //$questions = $repository->findBy([], ['askedAt' => 'DESC']);
         $questions = $repository->findAllAskedOrderedByNewest();
-        //dd($questions);
-
         return $this->render('homepage.html.twig',["questions"=>$questions]);
 
     }
