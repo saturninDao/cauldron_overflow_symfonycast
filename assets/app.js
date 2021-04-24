@@ -10,7 +10,7 @@ import './styles/app.css';
 
 // start the Stimulus application
 import $ from 'jquery';
-
+/*
 var $container = $('.js-vote-arrows');
 $container.find('a').on('click', function(e) {
     e.preventDefault();
@@ -23,3 +23,4 @@ $container.find('a').on('click', function(e) {
         $container.find('.js-vote-total').text(data.votes);
     });
 });
+*/
