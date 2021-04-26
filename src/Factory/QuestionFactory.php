@@ -35,6 +35,11 @@ final class QuestionFactory extends ModelFactory
         // TODO inject services if required (https://github.com/zenstruck/foundry#factories-as-services)
     }
 
+    public function unpublished(): self
+    {
+        return $this->addState(['askedAt' => null]);
+    }
+
     protected function getDefaults(): array
     {
         return [
@@ -45,7 +50,7 @@ final class QuestionFactory extends ModelFactory
                 self::faker()->numberBetween(1, 4),
                 true
             ),
-            'askedAt' => self::faker()->boolean(70) ? self::faker()->dateTimeBetween('-100 days', '-1 minute') : null,
+            'askedAt' => self::faker()->dateTimeBetween('-100 days', '-1 minute'),
             'votes' => rand(-20, 50),
         ];
     }
