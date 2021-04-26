@@ -5,6 +5,7 @@ namespace App\Factory;
 use App\Entity\Question;
 use App\Repository\QuestionRepository;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\String\Slugger\AsciiSlugger;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -53,7 +54,11 @@ final class QuestionFactory extends ModelFactory
     {
         // see https://github.com/zenstruck/foundry#initialization
         return $this
-            // ->afterInstantiate(function(Questio n $question) {})
+            ->afterInstantiate(function(Question $question) {
+                if(!$question->getSlug()){
+                    $slugger = new AsciiSlugger();
+                    $question->setSlug($slugger->slug($question->getName()));}
+            })
         ;
     }
 
