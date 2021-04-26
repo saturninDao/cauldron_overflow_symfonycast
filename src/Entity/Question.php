@@ -40,7 +40,7 @@ class Question
     /**
      * @ORM\Column(type="integer")
      */
-    private $votes = 0;
+    private $votes;
 
     public function getId(): ?int
     {
